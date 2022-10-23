@@ -1,1 +1,5 @@
-# final_project_mk
+# Final Project
+
+**Contributors:** 
+- Kristo
+- Mariel
