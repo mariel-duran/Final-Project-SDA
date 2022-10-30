@@ -10,7 +10,7 @@ Dev flow - > Todo | In Development | Review | Testing | Done
 ### UI STAGE:
 - 1.00 Create the index page background, header and the project name - 8h
 - 1.01 Add the text area into the index page - 5h
-1.02 Create the toggle buttons for the index page - 8h
+- 1.02 Create the toggle buttons for the index page - 8h
 - 1.03 Add the submit button and align it correctly - 3h
 - 1.04 Properly formatting of the result body within the guide page - 8h
 - 1.05 Add hamburger button to the guide header, it should be clickable, and we should be able to see "home" link- 8h
@@ -25,3 +25,10 @@ Dev flow - > Todo | In Development | Review | Testing | Done
 - 1.13 Add logic to remove stop words from text - 13h
 - 1.14 Connect submit button with the logics - 8h
 - 1.15 Add logic to display the result of each toggles - 13h
+
+## Notes or Questions
+
+* Do we need a database? What for?
+* We don't need a login logic.
+* Idea for logic:
+  * We create python methods to cover each logic and then refer to it by importing.
