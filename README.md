@@ -4,7 +4,7 @@
 - Kristo
 - Mariel
 
-Dev flow - > Todo | Indevelopment | Review | Testing | Done
+Dev flow - > Todo | In Development | Review | Testing | Done
 
 ## Development Tickets for project:
 ### UI STAGE:
@@ -15,7 +15,7 @@ Dev flow - > Todo | Indevelopment | Review | Testing | Done
 - 1.04 Properly formatting of the result body within the guide page - 8h
 - 1.05 Add hamburger button to the guide header, it should be clickable, and we should be able to see "home" link- 8h
 ### APP LOGIC STAGE:
-- 1.06 Add logic for removing puctuations - 8h
+- 1.06 Add logic for removing punctuations - 8h
 - 1.07 Add logic to covert text to upper case and lower case - 8h
 - 1.08 Add logic to remove new line from text - 8h
 - 1.09 Add logic to remove extra space - 8h
