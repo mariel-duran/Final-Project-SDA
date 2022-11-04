@@ -39,3 +39,22 @@ nav h1{
 .change .bar3 {
   transform: translate(0, -11px) rotate(45deg);
 }
+
+input[type="text"] {
+    border: #1b1b1b;
+}
+
+.test {
+    padding: 2em;
+    border: #1b1b1b;
+    background-color: #1b1b1b;
+    width: 50%;
+    height: 50%;
+    align-content: center;
+}
+
+.content {
+    padding: 2em;
+    background-color: yellow;
+    width: 500px;
+}

@@ -15,8 +15,12 @@
       <div class="bar3"></div>
     </div>
 </nav>
-  {% block content %}{% endblock %}
+<div class="content">
+    {% block content %}
 
+
+    {% endblock %}
+</div>
 <script>
 function myFunction(x) {
   x.classList.toggle("change");
