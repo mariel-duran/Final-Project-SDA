@@ -1,50 +1,68 @@
 {% extends "lexicon/base.html" %}
-{% load static %}
 {% block title %}Lexicon{% endblock %}
 {% block content %}
+
 <form action="{% url 'lexicon:index' %}" method="post">
     {% csrf_token %}
-    <fieldset>
-    <label for="submitted_text"><textarea id="submitted_text" name="submitted_text" rows="15" cols="100"></textarea></label>
-    </fieldset>
-    <fieldset>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span> Remove Punctuations
-        </label>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span> Remove Punctuations
-        </label>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span> Remove Punctuations
-        </label>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span> Remove Punctuations
-        </label>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span> Remove Punctuations
-        </label>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span> Remove Punctuations
-        </label>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span> Remove Punctuations
-        </label>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span> Remove Punctuations
-        </label>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span> Remove Punctuations
-        </label>
-    </fieldset>
+
+    <label class= "textarea_div" for="submitted_text">
+        <textarea id="submitted_text" name="submitted_text" placeholder="Enter your text here!"></textarea>
+    </label>
+    <div class="toggles">
+        <div class="logic_switch">
+        <label class="switch" for="remove_punctuations">
+        <input type="checkbox" id="remove_punctuations" name="remove_punctuations">
+        <span class="slider round"></span></label> <p>Remove Punctuations</p>
+        </div>
+
+        <div class="logic_switch">
+        <label class="switch" for="upper_case">
+        <input type="checkbox" id="upper_case" name="upper_case">
+        <span class="slider round"></span></label> <p>Upper Case</p>
+        </div>
+
+        <div class="logic_switch">
+        <label class="switch" for="lower_case">
+        <input type="checkbox" id="lower_case" name="lower_case">
+        <span class="slider round"></span></label> <p>Lower Case</p>
+        </div>
+
+        <div class="logic_switch">
+        <label class="switch" for="new_line_remove">
+        <input type="checkbox" id="new_line_remove" name="new_line_remove">
+        <span class="slider round"></span></label> <p>New Line Remove</p>
+        </div>
+
+        <div class="logic_switch">
+        <label class="switch" for="extra_space_remove">
+        <input type="checkbox" id="extra_space_remove" name="extra_space_remove">
+        <span class="slider round"></span></label> <p>Extra Space Remove</p>
+        </div>
+
+        <div class="logic_switch">
+        <label class="switch" for="count_characters">
+        <input type="checkbox" id="count_characters" name="count_characters">
+        <span class="slider round"></span></label> <p>Count Characters</p>
+        </div>
+
+        <div class="logic_switch">
+        <label class="switch" for="spell_check">
+        <input type="checkbox" id="spell_check" name="spell_check">
+        <span class="slider round"></span></label> <p>Spell Check</p>
+        </div>
+
+        <div class="logic_switch">
+        <label class="switch" for="generate_summary">
+        <input type="checkbox" id="generate_summary" name="generate_summary">
+        <span class="slider round"></span></label> <p>Generate Summary Of a Word</p>
+        </div>
+
+        <div class="logic_switch">
+        <label class="switch" for="remove_stop_words">
+        <input type="checkbox" id="remove_stop_words" name="remove_stop_words">
+        <span class="slider round"></span></label> <p>Remove Stop Words of Your Paragraph</p>
+        </div>
+    </div>
     <input type="submit" value="Submit">
 </form>
 
