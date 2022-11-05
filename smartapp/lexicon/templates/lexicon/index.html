@@ -4,7 +4,9 @@
 {% block content %}
 <form action="{% url 'lexicon:index' %}" method="post">
     {% csrf_token %}
-
+    <fieldset>
+    <label for="submitted_text"><textarea id="submitted_text" name="submitted_text" rows="15" cols="100"></textarea></label>
+    </fieldset>
     <input type="submit" value="Submit">
 </form>
 
