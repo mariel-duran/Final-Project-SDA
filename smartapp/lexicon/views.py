@@ -6,4 +6,7 @@ def index(request):
     context = {}
     return render(request,'lexicon/index.html')
 
+def result(request):
+    context = {}
+    return render(request, 'lexicon/result.html')
 

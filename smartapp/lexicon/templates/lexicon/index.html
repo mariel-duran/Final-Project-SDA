@@ -2,11 +2,50 @@
 {% load static %}
 {% block title %}Lexicon{% endblock %}
 {% block content %}
-
-<div class="test"></div>
-
-<p style="display: block; color: black;">TEST asdkjasdjanksbfasdjvbalsdhjbvlahjsdbklvajbsdkjvnbaksdj</p>
-
-<p></p>
+<form action="{% url 'lexicon:index' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+    <label for="submitted_text"><textarea id="submitted_text" name="submitted_text" rows="15" cols="100"></textarea></label>
+    </fieldset>
+    <fieldset>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span> Remove Punctuations
+        </label>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span> Remove Punctuations
+        </label>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span> Remove Punctuations
+        </label>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span> Remove Punctuations
+        </label>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span> Remove Punctuations
+        </label>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span> Remove Punctuations
+        </label>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span> Remove Punctuations
+        </label>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span> Remove Punctuations
+        </label>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span> Remove Punctuations
+        </label>
+    </fieldset>
+    <input type="submit" value="Submit">
+</form>
 
 {% endblock %}
