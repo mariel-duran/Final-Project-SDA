@@ -1,4 +1,4 @@
-nav {
+header {
     position: fixed;
     top: 0;
     left: 0;
@@ -8,7 +8,7 @@ nav {
     display: block;
 }
 
-nav h1{
+header h1{
     color: aliceblue;
     padding: 0 1em;
     display: inline-block;
@@ -57,4 +57,8 @@ input[type="text"] {
     padding: 2em;
     background-color: yellow;
     width: 500px;
+}
+
+main {
+    display: inline-block;
 }

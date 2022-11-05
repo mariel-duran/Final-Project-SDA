@@ -2,11 +2,10 @@
 {% load static %}
 {% block title %}Lexicon{% endblock %}
 {% block content %}
+<form action="{% url 'lexicon:index' %}" method="post">
+    {% csrf_token %}
 
-<div class="test"></div>
-
-<p style="display: block; color: black;">TEST asdkjasdjanksbfasdjvbalsdhjbvlahjsdbklvajbsdkjvnbaksdj</p>
-
-<p></p>
+    <input type="submit" value="Submit">
+</form>
 
 {% endblock %}
