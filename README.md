@@ -1,7 +1,6 @@
 # Final Project
 
-**Contributors:** 
-- Kristo
+**Contributors:**
 - Mariel
 
 Dev flow - > Todo | In Development | Review | Testing | Done
