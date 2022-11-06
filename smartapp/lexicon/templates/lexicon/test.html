@@ -2,16 +2,16 @@
 {% block title %}Lexicon{% endblock %}
 {% block content %}
 
-<form action="{% url 'lexicon:result' %}" method="post" id="lexicon_form">
-    {% csrf_token %}
 
+<form action="{% url 'lexicon:index' %}" method="post">
+    {% csrf_token %}
     <label class= "textarea_div" for="submitted_text">
-        <textarea id="submitted_text" name="submitted_text" placeholder="Enter your text here!" form="lexicon_form"></textarea>
+        <textarea id="submitted_text" name="submitted_text" placeholder="Enter your text here!"></textarea>
     </label>
     <div class="toggles">
         <div class="logic_switch">
         <label class="switch" for="remove_punctuations">
-        <input type="checkbox" id="remove_punctuations" name="remove_punctuations">
+        <input type="checkbox" id="remove_punctuations" name="remove_punctuations" value="True">
         <span class="slider round"></span></label> <p>Remove Punctuations</p>
         </div>
 
