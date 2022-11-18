@@ -62,6 +62,9 @@ def count_characters(text: str):
 def spell_check(text: str):
     pass
 
+def generate_summary_of_word:
+    pass
+
 
 def remove_stop_words(text: str):
     new_text = [letter for letter in text]
