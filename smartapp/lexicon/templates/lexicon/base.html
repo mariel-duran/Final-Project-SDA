@@ -10,6 +10,9 @@
 <body>
     <header>
         <h1>Lexicon</h1>
+        <div id="myLinks" style="display: none; padding: 0.5em 1em; color: aliceblue;">
+            <a href="{% url 'lexicon:index' %}">Index</a>
+        </div>
         <div class="container" onclick="myFunction(this)">
           <div class="bar1"></div>
           <div class="bar2"></div>
@@ -26,6 +29,15 @@
     <script>
     function myFunction(x) {
       x.classList.toggle("change");
+      var y = document.getElementById("myLinks");
+      console.log(y)
+      if (y.style.display === "inline-block") {
+        y.style.display = "none";
+      } else {
+        y.style.display = "inline-block";
+        y.style.color = "aliceblue";
+        y.style.padding = "0.5em 1em";
+      }
     }
     </script>
 

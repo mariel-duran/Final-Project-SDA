@@ -65,7 +65,7 @@ def result(request):
         data = request.POST
         submitted_text = data.get('submitted_text')
         remove_punctuations = data.get('remove_punctuations')
-        upper_case = data.get('upper_case')
+        upper_lower = data.get('upper_lower')
         new_line_remove = data.get('new_line_remove')
         extra_space_remove = data.get('extra_space_remove')
         count_characters = data.get('count_characters')
@@ -74,8 +74,10 @@ def result(request):
 
         if remove_punctuations == "on":
             changed_text = remove_punctuations_func(changed_text)
-        if upper_case == "on":
+        if upper_lower == "upper_case":
             changed_text = upper_case_func(changed_text)
+        else:
+            changed_text = lower_case_func(changed_text)
         if new_line_remove == "on":
             changed_text = new_line_remove_func(changed_text)
         if extra_space_remove == "on":

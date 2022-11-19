@@ -1,10 +1,8 @@
 {% extends "lexicon/base.html" %}
-{% load static %}
 {% block title %}Result{% endblock %}
-
 {% block content %}
-    <h1>Result</h1>
 
+<div class="result_div">
     <h2>Submitted text</h2>
     <p>{{ submitted_text }}</p>
 
@@ -13,5 +11,6 @@
 
     <h2>Character count</h2>
     <p>{{ character_count }}</p>
+</div>
 
 {% endblock %}
