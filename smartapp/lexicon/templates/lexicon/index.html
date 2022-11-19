@@ -6,7 +6,7 @@
     {% csrf_token %}
 
     <label class= "textarea_div" for="submitted_text">
-        <textarea id="submitted_text" name="submitted_text" placeholder="Enter your text here!" form="lexicon_form"></textarea>
+        <textarea id="submitted_text" name="submitted_text" placeholder="Enter your text here!" form="lexicon_form" required></textarea>
     </label>
     <div class="toggles">
         <div class="logic_switch">
@@ -17,13 +17,13 @@
 
         <div class="logic_switch">
         <label class="switch" for="upper_case">
-        <input type="checkbox" id="upper_case" name="upper_case">
+        <input type="checkbox" id="upper_case" name="upper_lower" value="upper_case" onclick="onlyOne(this)">
         <span class="slider round"></span></label> <p>Upper Case</p>
         </div>
 
         <div class="logic_switch">
         <label class="switch" for="lower_case">
-        <input type="checkbox" id="lower_case" name="lower_case">
+        <input type="checkbox" id="lower_case" name="upper_lower" value="lower_case" onclick="onlyOne(this)">
         <span class="slider round"></span></label> <p>Lower Case</p>
         </div>
 
@@ -65,5 +65,14 @@
     </div>
     <input type="submit" value="Submit">
 </form>
+
+    <script>
+        function onlyOne(checkbox) {
+        var checkboxes = document.getElementsByName('upper_lower')
+        checkboxes.forEach((item) => {
+            if (item !== checkbox) item.checked = false
+        })
+        }
+    </script>
 
 {% endblock %}
