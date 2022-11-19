@@ -54,6 +54,17 @@ def count_characters_func(text: str):
     return counter
 
 
+# def remove_stop_words_func(text: str):
+#     new_text = [letter for letter in text]
+#     for i in range(0, len(new_text)):
+#         if new_text[i] in stopwords.words('english'):
+#             new_text.pop(i)
+#         else:
+#             continue
+#     text_without_stopwords = "".join(new_text)
+#     return text_without_stopwords
+
+
 def index(request):
     if request.method == "POST":
         return HttpResponseRedirect(reverse('lexicon:result'))
@@ -69,6 +80,7 @@ def result(request):
         new_line_remove = data.get('new_line_remove')
         extra_space_remove = data.get('extra_space_remove')
         count_characters = data.get('count_characters')
+        remove_stop_words = data.get('remove_stop_words')
         changed_text = submitted_text
         character_count = 0
 
@@ -82,6 +94,8 @@ def result(request):
             changed_text = new_line_remove_func(changed_text)
         if extra_space_remove == "on":
             changed_text = extra_space_remove_func(changed_text)
+        # if remove_stop_words == "on":
+        #     changed_text = remove_stop_words_func(changed_text)
         if count_characters == "on":
             character_count = count_characters_func(changed_text)
 

@@ -2,7 +2,8 @@ import string, nltk
 from nltk.corpus import stopwords
 from spellchecker import SpellChecker
 
-nltk.download('stopwords')
+# if stopwords have not been downloaded:
+# nltk.download('stopwords')
 
 text_example = '''
 my nime is mariel. 
@@ -79,9 +80,15 @@ def generate_summary_of_word(text:str):
 
 
 def remove_stop_words(text: str):
-    new_text = [letter for letter in text]
-    for i in range(0, len(new_text)-1):
-        if new_text[i] in stopwords.words('english'):
+    new_text = text.split()
+    print(new_text)
+    stopwords_list = stopwords.words('english')
+    print(new_text[10])
+    lenght_text = len(new_text)
+    print(lenght_text)
+    for i in range(lenght_text):
+        print(i)
+        if new_text[i] in stopwords_list:
             new_text.pop(i)
         else:
             continue
@@ -89,4 +96,4 @@ def remove_stop_words(text: str):
     return text_without_stopwords
 
 
-print(spell_check(text_example))
+print(remove_stop_words(text_example))

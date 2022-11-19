@@ -35,6 +35,11 @@ header a:visited {
     text-decoration: none;
 }
 
+header a:active {
+    color: aliceblue;
+    text-decoration: none;
+}
+
 /* Menu button  */
 .container {
     display: block;
@@ -176,7 +181,5 @@ input[type="submit"] {
 
 .result_div {
     padding-left: 5%;
-    color: #a41515;
-    border-style: solid;
-    border-color: #4ac1f7;
+    padding-top: 3%;
 }
