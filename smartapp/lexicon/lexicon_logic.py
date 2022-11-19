@@ -1,13 +1,13 @@
 import string, nltk
 from nltk.corpus import stopwords
+from spellchecker import SpellChecker
 
-import nltk
 nltk.download('stopwords')
 
 text_example = '''
-my name is mariel. 
+my nime is mariel. 
 I live in Estonia! 
-Im from Dominican Republic
+Im form Donican Republic
 '''
 
 
@@ -59,10 +59,22 @@ def count_characters(text: str):
             counter += 1
     return counter
 
-def spell_check(text: str):
-    pass
 
-def generate_summary_of_word:
+def spell_check(text: str):
+    # I want to have the output text to be same as input text but with spell checks, meaning I keep punctuation and
+    # case.
+    spell = SpellChecker()
+    words = new_line_remove(remove_punctuations(text)).split()
+    mispelled = spell.unknown(words)
+    for word in mispelled:
+        print(word)
+        new_word = spell.correction(word)
+        print(new_word)
+    correct_text = "".join(mispelled)
+    return correct_text
+
+
+def generate_summary_of_word(text:str):
     pass
 
 
@@ -76,4 +88,5 @@ def remove_stop_words(text: str):
     text_without_stopwords = "".join(new_text)
     return text_without_stopwords
 
-print(remove_stop_words(text_example))
+
+print(spell_check(text_example))
