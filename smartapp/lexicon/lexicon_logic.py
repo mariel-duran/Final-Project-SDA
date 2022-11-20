@@ -36,18 +36,13 @@ def lower_case_func(text: str):
 
 
 def new_line_remove_func(text: str):
-    return "".join(text.splitlines())
+    return "".join([line + " " for line in text.splitlines()])
 
 
 def extra_space_remove_func(text: str):
-    new_text = [letter for letter in text]
-    for i in range(0, len(new_text)):
-        if new_text[i] == ' ':
-            new_text[i] = ''
-        else:
-            continue
-    text_without_space = "".join(new_text)
-    return text_without_space
+    new_text = text.split()
+    text_without_extra_space = "".join([word + " " for word in new_text])
+    return text_without_extra_space
 
 
 def count_characters_func(text: str):
