@@ -27,7 +27,8 @@ def result(request):
         changed_text = submitted_text
 
         character_count = 0
-        mispelled_dict = {}
+        misspelled_dict = {}
+        summary_word_dict = {}
 
         # options that affect the text directly
         if remove_punctuations == "on":
@@ -48,7 +49,11 @@ def result(request):
             character_count = lexicon_logic.count_characters_func(changed_text)
 
         if spell_check == "on":
-            mispelled_dict = lexicon_logic.spell_check_func(changed_text)
+            misspelled_dict = lexicon_logic.spell_check_func(changed_text)
+
+        if generate_summary == "on":
+            summary_word_dict = lexicon_logic.generate_summary_of_word_func(changed_text)
+
 
 
 
@@ -57,7 +62,8 @@ def result(request):
                       {'submitted_text': submitted_text,
                        'changed_text': changed_text,
                        'character_count': character_count,
-                       'mispelled_dict': mispelled_dict,
+                       'mispelled_dict': misspelled_dict,
+                       'summary_word_dict': summary_word_dict,
                        })
     return HttpResponseRedirect(reverse('lexicon:index'))
 

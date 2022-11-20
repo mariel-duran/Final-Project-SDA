@@ -35,6 +35,24 @@
     </table>
     {% endif %}
 
+    {% if summary_word_dict %}
+    <h2>Summary of a Word</h2>
+    <br>
+    <table>
+        <tr>
+            <th>Word</th>
+            <th>Summary Results</th>
+        </tr>
+
+        {% for word, summary_results in summary_word_dict.items %}
+        <tr>
+            <td>{{ word }}</td>
+            <td>{{ summary_results }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
 </div>
 
 {% endblock %}

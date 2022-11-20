@@ -182,7 +182,7 @@ input[type="submit"] {
 .result_div {
     max-width: 80%;
     width: 80%;
-    height: 300px;
+    height: auto;
     padding-left: 5%;
     padding-top: 3%;
     margin-left: 5%;
@@ -196,4 +196,12 @@ input[type="submit"] {
 
 .result_div th, td {
     padding: 10px;
+}
+
+.result_div th {
+    text-align: left;
+}
+
+.result_div tr {
+    border-bottom: 1px solid #1b1b1b;
 }

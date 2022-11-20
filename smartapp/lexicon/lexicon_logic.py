@@ -54,7 +54,6 @@ def count_characters_func(text: str):
     new_text = [letter for letter in text]
     counter = 0
     for i in range(len(new_text)):
-        print(new_text[i])
         if new_text[i] == ' ':
             continue
         else:
@@ -73,13 +72,20 @@ def spell_check_func(text: str):
 
 
 def generate_summary_of_word_func(text:str):
-    pass
+    # get the words for search
+    words_to_search = remove_stop_words_func(remove_punctuations_func(text)).split()
+    word_summary_dic = {}
+    for word in words_to_search:
+        if wikipedia.search(word) == None:
+            word_summary_dic[word] = "No results found"
+        else:
+            word_summary_dic[word] = wikipedia.summary(word, sentences = 1)
+    return word_summary_dic
 
 
 def remove_stop_words_func(text: str):
     unchecked_text = text.split()
     stopwords_list = stopwords.words('english')
-    print(stopwords_list)
     length_text = len(unchecked_text)
     hold_non_stopwords = []
     for i in range(length_text):
@@ -89,6 +95,3 @@ def remove_stop_words_func(text: str):
             hold_non_stopwords.append(unchecked_text[i])
     text_without_stopwords = "".join([word + " " for word in hold_non_stopwords])
     return text_without_stopwords
-
-
-
