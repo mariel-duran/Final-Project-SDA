@@ -1,6 +1,7 @@
 import string, nltk
 from nltk.corpus import stopwords
 from spellchecker import SpellChecker
+import wikipedia
 
 # if stopwords have not been downloaded:
 # nltk.download('stopwords')
@@ -12,48 +13,42 @@ Im form Donican Republic
 '''
 
 
-def remove_punctuations(text: str):
+def remove_punctuations_func(text: str):
     punctuation = string.punctuation
     new_text = [letter for letter in text]
-    for i in range(0, len(new_text)):
+    for i in range(len(new_text)):
         if new_text[i] in punctuation:
             new_text[i] = ''
         else:
             continue
-    modified_text = "".join(new_text)
+    modified_text = "".join([word for word in new_text])
     return modified_text
 
 
-def upper_case(text: str):
+def upper_case_func(text: str):
     new_text = text.upper()
     return new_text
 
 
-def lower_case(text: str):
+def lower_case_func(text: str):
     new_text = text.lower()
     return new_text
 
 
-def new_line_remove(text: str):
-    return "".join(text.splitlines())
+def new_line_remove_func(text: str):
+    return "".join([line + " " for line in text.splitlines()])
 
 
-def extra_space_remove(text: str):
-    new_text = [letter for letter in text]
-    for i in range(0, len(new_text)):
-        if new_text[i] == ' ':
-            new_text[i] = ''
-        else:
-            continue
-    text_without_space = "".join(new_text)
-    return text_without_space
+def extra_space_remove_func(text: str):
+    new_text = text.split()
+    text_without_extra_space = "".join([word + " " for word in new_text])
+    return text_without_extra_space
 
 
-def count_characters(text: str):
+def count_characters_func(text: str):
     new_text = [letter for letter in text]
     counter = 0
-    for i in range(0, len(new_text)):
-        print(new_text[i])
+    for i in range(len(new_text)):
         if new_text[i] == ' ':
             continue
         else:
@@ -61,39 +56,40 @@ def count_characters(text: str):
     return counter
 
 
-def spell_check(text: str):
-    # I want to have the output text to be same as input text but with spell checks, meaning I keep punctuation and
-    # case.
+def spell_check_func(text: str):
     spell = SpellChecker()
-    words = new_line_remove(remove_punctuations(text)).split()
-    mispelled = spell.unknown(words)
-    for word in mispelled:
-        print(word)
-        new_word = spell.correction(word)
-        print(new_word)
-    correct_text = "".join(mispelled)
-    return correct_text
+    words = remove_punctuations_func(text).split()
+    misspelled = spell.unknown(words)
+    misspelled_options = {}
+    for word in misspelled:
+        misspelled_options[word] = [spell.correction(word), spell.candidates(word)]
+    return misspelled_options
 
 
-def generate_summary_of_word(text:str):
-    pass
-
-
-def remove_stop_words(text: str):
-    new_text = text.split()
-    print(new_text)
-    stopwords_list = stopwords.words('english')
-    print(new_text[10])
-    lenght_text = len(new_text)
-    print(lenght_text)
-    for i in range(lenght_text):
-        print(i)
-        if new_text[i] in stopwords_list:
-            new_text.pop(i)
+def generate_summary_of_word_func(text:str):
+    # get the words for search
+    words_to_search = remove_stop_words_func(remove_punctuations_func(text)).split()
+    word_summary_dic = {}
+    for word in words_to_search:
+        if wikipedia.search(word) == None:
+            word_summary_dic[word] = "No results found"
         else:
+            try:
+                word_summary_dic[word] = wikipedia.summary(word, sentences = 1)
+            except wikipedia.exceptions.DisambiguationError as e:
+                word_summary_dic[word] = f"There are several options: {e.options}"
+    return word_summary_dic
+
+
+def remove_stop_words_func(text: str):
+    unchecked_text = text.split()
+    stopwords_list = stopwords.words('english')
+    length_text = len(unchecked_text)
+    hold_non_stopwords = []
+    for i in range(length_text):
+        if unchecked_text[i].lower() in stopwords_list:
             continue
-    text_without_stopwords = "".join(new_text)
+        else:
+            hold_non_stopwords.append(unchecked_text[i])
+    text_without_stopwords = "".join([word + " " for word in hold_non_stopwords])
     return text_without_stopwords
-
-
-print(remove_stop_words(text_example))
