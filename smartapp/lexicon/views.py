@@ -1,68 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-# from smartapp.lexicon import lexicon_logic
+from . import lexicon_logic
 import string, nltk
 from nltk.corpus import stopwords
-
-
-def remove_punctuations_func(text: str):
-    punctuation = string.punctuation
-    new_text = [letter for letter in text]
-    for i in range(0, len(new_text)):
-        if new_text[i] in punctuation:
-            new_text[i] = ''
-        else:
-            continue
-    modified_text = "".join(new_text)
-    return modified_text
-
-
-def upper_case_func(text: str):
-    new_text = text.upper()
-    return new_text
-
-
-def lower_case_func(text: str):
-    new_text = text.lower()
-    return new_text
-
-
-def new_line_remove_func(text: str):
-    return "".join(text.splitlines())
-
-
-def extra_space_remove_func(text: str):
-    new_text = [letter for letter in text]
-    for i in range(0, len(new_text)):
-        if new_text[i] == ' ':
-            new_text[i] = ''
-        else:
-            continue
-    text_without_space = "".join(new_text)
-    return text_without_space
-
-
-def count_characters_func(text: str):
-    new_text = [letter for letter in text]
-    counter = 0
-    for i in range(0, len(new_text)):
-        if new_text[i] == ' ':
-            continue
-        else:
-            counter += 1
-    return counter
-
-
-# def remove_stop_words_func(text: str):
-#     new_text = [letter for letter in text]
-#     for i in range(0, len(new_text)):
-#         if new_text[i] in stopwords.words('english'):
-#             new_text.pop(i)
-#         else:
-#             continue
-#     text_without_stopwords = "".join(new_text)
-#     return text_without_stopwords
 
 
 def index(request):
@@ -80,29 +21,49 @@ def result(request):
         new_line_remove = data.get('new_line_remove')
         extra_space_remove = data.get('extra_space_remove')
         count_characters = data.get('count_characters')
+        spell_check = data.get('spell_check')
+        generate_summary = data.get('generate_summary')
         remove_stop_words = data.get('remove_stop_words')
         changed_text = submitted_text
-        character_count = 0
 
+        character_count = 0
+        misspelled_dict = {}
+        summary_word_dict = {}
+
+        # options that affect the text directly
         if remove_punctuations == "on":
-            changed_text = remove_punctuations_func(changed_text)
+            changed_text = lexicon_logic.remove_punctuations_func(changed_text)
         if upper_lower == "upper_case":
-            changed_text = upper_case_func(changed_text)
+            changed_text = lexicon_logic.upper_case_func(changed_text)
         else:
-            changed_text = lower_case_func(changed_text)
+            changed_text = lexicon_logic.lower_case_func(changed_text)
         if new_line_remove == "on":
-            changed_text = new_line_remove_func(changed_text)
+            changed_text = lexicon_logic.new_line_remove_func(changed_text)
         if extra_space_remove == "on":
-            changed_text = extra_space_remove_func(changed_text)
-        # if remove_stop_words == "on":
-        #     changed_text = remove_stop_words_func(changed_text)
+            changed_text = lexicon_logic.extra_space_remove_func(changed_text)
+        if remove_stop_words == "on":
+            changed_text = lexicon_logic.remove_stop_words_func(changed_text)
+
+        # other functions
         if count_characters == "on":
-            character_count = count_characters_func(changed_text)
+            character_count = lexicon_logic.count_characters_func(changed_text)
+
+        if spell_check == "on":
+            misspelled_dict = lexicon_logic.spell_check_func(changed_text)
+
+        if generate_summary == "on":
+            summary_word_dict = lexicon_logic.generate_summary_of_word_func(changed_text)
+
+
+
+
 
         return render(request, 'lexicon/result.html',
                       {'submitted_text': submitted_text,
                        'changed_text': changed_text,
-                       'character_count': character_count
+                       'character_count': character_count,
+                       'mispelled_dict': misspelled_dict,
+                       'summary_word_dict': summary_word_dict,
                        })
     return HttpResponseRedirect(reverse('lexicon:index'))
 
