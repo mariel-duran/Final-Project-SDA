@@ -79,7 +79,10 @@ def generate_summary_of_word_func(text:str):
         if wikipedia.search(word) == None:
             word_summary_dic[word] = "No results found"
         else:
-            word_summary_dic[word] = wikipedia.summary(word, sentences = 1)
+            try:
+                word_summary_dic[word] = wikipedia.summary(word, sentences = 1)
+            except wikipedia.exceptions.DisambiguationError as e:
+                word_summary_dic[word] = f"There are several options: {e.options}"
     return word_summary_dic
 
 
