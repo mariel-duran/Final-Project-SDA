@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'lexicon/style.css' %}">
 </head>
 <body>
+{% block content %}
     <header>
         <h1>Lexicon</h1>
         <div id="myLinks" style="display: none; padding: 0.5em 1em; color: aliceblue;">
@@ -21,11 +22,12 @@
     </header>
     <main>
 
-        {% block content %}
 
 
-        {% endblock %}
+
+
     </main>
+{% endblock %}
     <script>
     function myFunction(x) {
       x.classList.toggle("change");
