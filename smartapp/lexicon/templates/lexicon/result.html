@@ -9,15 +9,18 @@
     <h2>Changed Text</h2>
         <br>
     <p>{{ changed_text }}</p>
+        <br>
     {% endif %}
 
     {% if character_count > 0 %}
+        <hr>
     <h2>Character count</h2>
         <br>
     <p>{{ character_count }}</p>
     {% endif %}
 
     {% if mispelled_dict %}
+        <hr>
     <h2>Spell Checker</h2>
     <br>
     <p>The following words might be misspelled:</p>
@@ -37,6 +40,7 @@
     {% endif %}
 
     {% if summary_word_dict %}
+        <hr>
     <h2>Summary of a Word</h2>
     <br>
     <table>
