@@ -21,10 +21,15 @@ def result(request):
         new_line_remove = data.get('new_line_remove')
         extra_space_remove = data.get('extra_space_remove')
         count_characters = data.get('count_characters')
+        spell_check = data.get('spell_check')
+        generate_summary = data.get('generate_summary')
         remove_stop_words = data.get('remove_stop_words')
         changed_text = submitted_text
-        character_count = 0
 
+        character_count = 0
+        mispelled_dict = {}
+
+        # options that affect the text directly
         if remove_punctuations == "on":
             changed_text = lexicon_logic.remove_punctuations_func(changed_text)
         if upper_lower == "upper_case":
@@ -37,13 +42,22 @@ def result(request):
             changed_text = lexicon_logic.extra_space_remove_func(changed_text)
         if remove_stop_words == "on":
             changed_text = lexicon_logic.remove_stop_words_func(changed_text)
+
+        # other functions
         if count_characters == "on":
             character_count = lexicon_logic.count_characters_func(changed_text)
+
+        if spell_check == "on":
+            mispelled_dict = lexicon_logic.spell_check_func(changed_text)
+
+
+
 
         return render(request, 'lexicon/result.html',
                       {'submitted_text': submitted_text,
                        'changed_text': changed_text,
-                       'character_count': character_count
+                       'character_count': character_count,
+                       'mispelled_dict': mispelled_dict,
                        })
     return HttpResponseRedirect(reverse('lexicon:index'))
 

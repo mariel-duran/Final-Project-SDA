@@ -3,14 +3,37 @@
 {% block content %}
 
 <div class="result_div">
-    <h2>Submitted text</h2>
-    <p>{{ submitted_text }}</p>
-
+{#    <h2>Submitted text</h2>#}
+{#    <p>{{ submitted_text }}</p>#}
+    {% if changed_text != submitted_text %}
     <h2>Changed text</h2>
     <p>{{ changed_text }}</p>
+    {% endif %}
 
+    {% if character_count|length > 0 %}
     <h2>Character count</h2>
     <p>{{ character_count }}</p>
+    {% endif %}
+
+    {% if mispelled_dict %}
+    <h2>Spell Checker</h2>
+    <br>
+    <p>The following words might be misspelled:</p>
+    <table>
+        <tr>
+            <th>Misspelled</th>
+            <th>Alternatives</th>
+        </tr>
+
+        {% for misspelled_word, alternative in mispelled_dict.items %}
+        <tr>
+            <td>{{ misspelled_word }}</td>
+            <td>{{ alternative }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
 </div>
 
 {% endblock %}

@@ -1,6 +1,7 @@
 import string, nltk
 from nltk.corpus import stopwords
 from spellchecker import SpellChecker
+import wikipedia
 
 # if stopwords have not been downloaded:
 # nltk.download('stopwords')
@@ -90,4 +91,4 @@ def remove_stop_words_func(text: str):
     return text_without_stopwords
 
 
-print(spell_check_func(text_example))
+

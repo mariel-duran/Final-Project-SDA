@@ -182,4 +182,9 @@ input[type="submit"] {
 .result_div {
     padding-left: 5%;
     padding-top: 3%;
+    border-style: solid;
+}
+
+.result_div th, td {
+    padding: 10px;
 }
